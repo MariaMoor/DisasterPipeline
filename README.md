@@ -8,6 +8,7 @@ A machine learning pipeline to categorize events so that the messages can be sen
 
 You need to have at least 3.0 version of Python and the following libraries installed:
 re
+
 sqlchemy
 pandas
 numpy
@@ -22,6 +23,7 @@ Matplotlib
 **Files Descriptions:**
 
 messages.csv - a csv file with the messages (one column should be in English)
+
 categories.csv - a csv file containing a training sample of categorized messages
 
 **Instructions:**
