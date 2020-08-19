@@ -7,17 +7,25 @@ A machine learning pipeline to categorize events so that the messages can be sen
 **Installations:**
 
 You need to have at least 3.0 version of Python and the following libraries installed:
+
 re
 
 sqlchemy
+
 pandas
+
 numpy
+
 nltk
+
 sklearn
 
 pickle
+
 flask SQLAlchemy
+
 plotly
+
 Matplotlib
 
 **Files Descriptions:**
