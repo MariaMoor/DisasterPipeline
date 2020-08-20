@@ -1,10 +1,11 @@
-# import libraries
+import sys
 import sqlite3
 from sqlalchemy import create_engine
 
 import re
 import numpy as np
 import pandas as pd
+import pickle
 
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
@@ -13,41 +14,38 @@ import nltk
 nltk.download(['punkt', 'wordnet', 'stopwords'])
 
 from sklearn.pipeline import Pipeline
-from sklearn.metrics import multilabel_confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.multioutput import MultiOutputClassifier
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.preprocessing import LabelEncoder 
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import classification_report
+
+def load_data(database_filepath):
+    """
+    Loads data from SQL Database
+    INPUT:
+    database_filepath: SQL database file
+    OUTPUT:
+    X : array of features
+    Y : array of target values
+    category_names list: labels for target values
+    """
+    engine = create_engine('sqlite:///{}'.format(database_filepath))
+    db_name=re.sub(r'(.+/|.db)', '', database_filepath)
+    df = pd.read_sql('SELECT * FROM %s' % (db_name), engine)
+    X = df.message.values
+    Y = df.drop(columns=['id', 'message', 'original', 'genre']).values
+    category_names = df.drop(columns=['id', 'message', 'original', 'genre']).columns
+    return X, Y, category_names
 
 
-# In[5]:
-
-
-# load data from database
-engine = create_engine('sqlite:///DisasterPipeline.db')
-df = pd.read_sql('SELECT * FROM DisasterPipeline', engine)
-X = df.message.values
-Y_df = df.drop(columns=['id', 'message', 'original', 'genre'])
-
-# transform 'genre' data from categorical type to integer
-le = LabelEncoder()
-y1=list(le.fit_transform(df.genre))
-y1=pd.Series(y1, name='genre')
-
-
-Y_df = pd.concat([y1, Y_df], axis=1) #create a Dataframe of categories
-Y=Y_df[['genre', 'related', 'request']].values # take only first 3 categories from Dataframe and convert them to array
-
-
-# ### 2. Write a tokenization function to process your text data
 def tokenize(text):
-    '''
+    """
     Function to tokenize the text messages
-    Input: text
-    output: cleaned tokenized text as a list object
-    '''
+    INPUT: text
+    OUTPUT: cleaned tokenized text as a list object
+    """
     text = re.sub(r"[^a-zA-Z0-9]", " ", text.lower())
     stop_words = stopwords.words("english")
     lemmatizer = WordNetLemmatizer()
@@ -61,72 +59,93 @@ def tokenize(text):
     return clean_tokens
 
 
-# ### 3. Build a machine learning pipeline
-# This machine pipeline should take in the `message` column as input and output classification results on the other 36 categories in the dataset.
-# You may find the [MultiOutputClassifier](http://scikit-learn.org/stable/modules/generated/sklearn.multioutput.MultiOutputClassifier.html) helpful
-# for predicting multiple target variables.
-
-pipeline = Pipeline([
+def build_model():
+    '''
+    Function to build a model, create pipeline, hypertuning as well as gridsearchcv
+    INPUT None
+    OUTPUT: Model
+    '''
+    pipeline = Pipeline([
     ('vect', CountVectorizer(tokenizer=tokenize)),
     ('tfidf', TfidfTransformer()),
     ('clf', MultiOutputClassifier(estimator=RandomForestClassifier()))
-])
+    ])
+    
+    parameters = {
+        #'vect__max_df': (0.5, 0.75, 1.0),
+        #'tfidf__use_idf': (True, False),
+        'clf__estimator__n_estimators': [50, 100],
+        'clf__estimator__min_samples_split': [2, 4],
+        #'clf__estimator__max_features':['sqrt', 0.25, 0.50, 0.75, 1.0],
+        'clf__estimator__criterion':['gini', 'entropy'],
+        'clf__estimator__bootstrap' : [True, False]
+        } 
+    cv = GridSearchCV(pipeline, param_grid=parameters)
+    return cv
 
 
-# ### 4. Train pipeline
+def evaluate_model(model, X_test, Y_test, category_names):
+    """
+    Evaluates model's performance
+    INPUT:
+    model:  model to train
+    X_test: test features
+    Y_test: test targets
+    category_names: labels of target values
+    OUTPUT: None
+    """
 
-# - Split data into train and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2)
+    # predict
+    y_pred = model.predict(X_test)
 
-# - Train pipeline and get predicted values
-pipeline.fit(X_train, y_train)
+    # print classification report
+    print(classification_report(Y_test, y_pred, target_names=category_names))
 
-
-y_pred=pipeline.predict(X_test)
-
-#Score pipeline for the first createria
-
-score=pipeline.score(X_test, y_test)
-from sklearn.metrics import confusion_matrix
-cm_y1 = confusion_matrix(y_test[:,0],y_pred[:,0])
-
-
-print(score)
-print(cm_y1)
-
+    # print accuracy score
+    print('Accuracy: {}'.format(np.mean(Y_test == y_pred)))
 
 
-# ### 5. Test your model
-# Report the f1 score, precision and recall for each output category of the dataset. You can do this by iterating through the columns and calling sklearn's `classification_report` on each.
+def save_model(model, model_filepath):
+    """
+    Saves the model to a Python pickle file    
+    INPUT:
+    model: trained model
+    model_filepath: path where to save the model
+    OUTPUT: None
+    """
 
-from sklearn.metrics import multilabel_confusion_matrix
-mmcm=multilabel_confusion_matrix(y_test, y_pred)
-
-from sklearn.metrics import classification_report
-print(classification_report(y_test, y_pred, target_names=['genre', 'related', 'request']))
-
-
-# ### 6. Improve your model
-# Use grid search to find better parameters. 
-
-parameters = 
-cv = 
+    # save the model to a pickle file
+    pickle.dump(model, open(model_filepath, 'wb'))
 
 
-# ### 7. Test your model
-# Show the accuracy, precision, and recall of the tuned model.  
-# Since this project focuses on code quality, process, and  pipelines, there is no minimum performance metric needed to pass.
-# However, make sure to fine tune your models for accuracy, precision and recall to make your project stand out - especially for your portfolio!
+
+def main():
+    if len(sys.argv) == 3:
+        database_filepath, model_filepath = sys.argv[1:]
+        print('Loading data...\n    DATABASE: {}'.format(database_filepath))
+        X, Y, category_names = load_data(database_filepath)
+        X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2)
+        
+        print('Building model...')
+        model = build_model()
+        
+        print('Training model...')
+        model.fit(X_train, Y_train)
+        
+        print('Evaluating model...')
+        evaluate_model(model, X_test, Y_test, category_names)
+
+        print('Saving model...\n    MODEL: {}'.format(model_filepath))
+        save_model(model, model_filepath)
+
+        print('Trained model saved!')
+
+    else:
+        print('Please provide the filepath of the disaster messages database '\
+              'as the first argument and the filepath of the pickle file to '\
+              'save the model to as the second argument. \n\nExample: python '\
+              'train_classifier.py ../data/DisasterResponse.db classifier.pkl')
 
 
-# ### 8. Try improving your model further. Here are a few ideas:
-# * try other machine learning algorithms
-# * add other features besides the TF-IDF
-
-
-# ### 9. Export your model as a pickle file
-
-
-# ### 10. Use this notebook to complete `train.py`
-# Use the template file attached in the Resources folder to write a script that runs the steps above to create a database and export a model based on a new dataset specified by the user.
-
+if __name__ == '__main__':
+    main()
