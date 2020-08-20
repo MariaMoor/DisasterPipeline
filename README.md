@@ -2,12 +2,12 @@
 
 
 ## Table of Contents:
-1. [ Project Overview. ](#prov)
-2. [ Installations. ](#instal)
-3. [ Files Descriptions. ](#fd)
-4. [ Model explanation. ](#me)
-5. [ Instructions. ](#instr)
-6. [Licensing, Authors, Acknowledgements](#li)
+1. [ Project Overview.](#prov)
+2. [Installations.](#instal)
+3. [Files Descriptions.](#fd)
+4. [Model explanation.](#me)
+5. [Instructions.](#instr)
+6. [Licensing, Authors, Acknowledgements.](#li)
 
 
 <a name="prov"></a>
