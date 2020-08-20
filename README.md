@@ -44,24 +44,21 @@ Matplotlib<br />
 <a name="fd"></a>
 ## Files Descriptions:
 
--- app--------------------------------------------------------><br />
+-- app<br />
 | -- template<br />
-| |-- master.html  # main page of web app<br />
-| |-- go.html  # classification result page of web app
-|--  run.py  # Flask file that runs app
+| |-- master.html------------------> main page of web app<br />
+| |-- go.html----------------------> classification result page of web app<br />
+|--  run.pyv-----------------------> Flask file that runs app<br />
 
 -- data
-|- disaster_categories.csv  -> a csv file containing a training sample of categorized messages<br />
-|- disaster_messages.csv  -> a csv file with the messages (one column should be in English)<br />
-|- process_data.py
-|- InsertDatabaseName.db   # database to save clean data to
+|- disaster_categories.csv---------> file containing a training sample of categorized messages<br />
+|- disaster_messages.csv-----------> file with the disaster messages<br />
+|- process_data.py-----------------> performs ETL Process<br />
+|- DisasterResponse.db-------------> database to save clean data to<br />
 
 - models
-|- train_classifier.py
-|- classifier.pkl  # saved model 
-
-- README.md
-
+|- train_classifier.py------------> performs ML Process<br />
+|- classifier.pkl ----------------> saved model<br />
 
 
 <a name="me"></a>
