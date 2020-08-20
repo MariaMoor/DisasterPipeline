@@ -5,18 +5,22 @@
 
 
 ## Table of Contents:
-1. [ Installations. ](#instal)
-2. [ Project Overview. ](#prov)
+1. [ Project Overview. ](#prov)
+2. [ Installations. ](#instal)
 3. [ Files Descriptions. ](#fd)
-4. [ Instructions. ](#instr)
-5. [ Model explanation. ](#me)
+4. [ Model explanation. ](#me)
+5. [ Instructions. ](#instr)
+6. [Licensing, Authors, Acknowledgements](#li)
 
 
 <a name="prov"></a>
 ## Project Overview:
 
-In this project I am working with a dataset of real messages that were sent during disaster events, provided by [Figure Eight](https://www.figure-eight.com)
-A machine learning pipeline to categorize events so that the messages can be sent to an appropriate disaster relief agency.
+In this project I am working with a dataset of real messages that were sent during disaster events, provided by [Figure Eight](https://www.figure-eight.com).
+I am creating a machine learning pipeline to categorize events so that the messages can be sent to an appropriate disaster relief agency.
+My project also includes a web app where an emergency worker can input a new message and get classification results in several categories.
+The web app also displays visualizations of the data. 
+
 
 <a name="instal"></a>
 ## Installations:
@@ -64,10 +68,15 @@ The f1 score, precision and recall for the test set is outputted for each catego
 <a name="instr"></a>
 **Instructions:**
 
+There are 3 steps to be executed to run the project:
 
-**Results:**
+1. Cleaning Data
+to run the data you need to go to the project directory and run the folliwing command:
+
+python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db
 
 
+<a name="li"></a>
 **Licensing, Authors, Acknowledgements**
 
 I would like to give a credit to Figure Eight Machine intelligence company for providing original dataset of Disaster Response Messages.
