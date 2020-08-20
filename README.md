@@ -42,22 +42,22 @@ Matplotlib<br />
 
 
 <a name="fd"></a>
-**Files Descriptions:**
+## Files Descriptions:
 
 messages.csv - a csv file with the messages (one column should be in English)<br />
 categories.csv - a csv file containing a training sample of categorized messages
 
 
 <a name="me"></a>
-**Model explanation:**
+##Model explanation:
 
-ETL
+**ETL**
 
 The ETL script, process_data.py, takes the file paths of the two datasets (messanges and categories) and SQL database.
 It cleans the datasets, merges them, splits the categories column into separate columns, converts values to binary, and drops duplicates.
 Then it stores the clean data into a SQLite database in the specified database file path.
 
-Machine Learning
+**Machine Learning**
 
 The machine learning script, train_classifier.py takes the data from the SQL database, creates and trains a multi-output classifier on the 36 categories in the dataset.
 This is done using the machine learning pipeline to first vectorize and apply TF-IDF to the text and then train the model.
@@ -66,7 +66,7 @@ GridSearchCV is used to find the best parameters for the model.
 The f1 score, precision and recall for the test set is outputted for each category.
 
 <a name="instr"></a>
-**Instructions:**
+## Instructions:
 
 There are 3 steps to be executed to run the project:
 
@@ -77,6 +77,6 @@ python data/process_data.py data/disaster_messages.csv data/disaster_categories.
 
 
 <a name="li"></a>
-**Licensing, Authors, Acknowledgements**
+##Licensing, Authors, Acknowledgements
 
 I would like to give a credit to Figure Eight Machine intelligence company for providing original dataset of Disaster Response Messages.
