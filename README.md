@@ -49,7 +49,7 @@ categories.csv - a csv file containing a training sample of categorized messages
 
 
 <a name="me"></a>
-##Model explanation:
+## Model explanation:
 
 **ETL**
 
@@ -77,6 +77,6 @@ python data/process_data.py data/disaster_messages.csv data/disaster_categories.
 
 
 <a name="li"></a>
-##Licensing, Authors, Acknowledgements
+## Licensing, Authors, Acknowledgements
 
 I would like to give a credit to Figure Eight Machine intelligence company for providing original dataset of Disaster Response Messages.
