@@ -3,7 +3,14 @@ A machine learning pipeline to categorize events so that the messages can be sen
 
 **Table of Contents:**
 
-* Installations:
+----
+
+## On this page
+
+- TOC
+{:toc}
+
+----
 
 <!-- blank line -->
 ----
