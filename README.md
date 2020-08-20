@@ -1,7 +1,4 @@
 # DisasterPipeline
-<!-- blank line -->
-----
-<!-- blank line -->
 
 
 ## Table of Contents:
