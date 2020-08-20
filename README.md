@@ -17,8 +17,8 @@ A machine learning pipeline to categorize events so that the messages can be sen
 You need to have at least 3.0 version of Python and the following libraries installed:
 
 re
-sqlchemy \n
-pandas/n
+sqlchemy__
+pandas__
 numpy
 nltk
 
