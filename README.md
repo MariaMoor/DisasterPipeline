@@ -5,13 +5,14 @@ A machine learning pipeline to categorize events so that the messages can be sen
 
 * Installations:
 
-
+<!-- blank line -->
+----
+<!-- blank line -->
 **Installations:**
 
 You need to have at least 3.0 version of Python and the following libraries installed:
 
-re
-
+re <!>
 sqlchemy
 
 pandas
@@ -29,6 +30,10 @@ flask SQLAlchemy
 plotly
 
 Matplotlib
+
+<!-- blank line -->
+----
+<!-- blank line -->
 
 **Files Descriptions:**
 
