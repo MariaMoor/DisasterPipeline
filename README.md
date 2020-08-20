@@ -44,9 +44,9 @@ Matplotlib<br />
 <a name="fd"></a>
 ## Files Descriptions:
 
-- app
-| - template
-| |- master.html  # main page of web app
+-- app<br />
+| -- template<br />
+| |- master.html  # main page of web app<br />
 | |- go.html  # classification result page of web app
 |- run.py  # Flask file that runs app
 
