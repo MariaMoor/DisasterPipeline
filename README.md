@@ -1,8 +1,10 @@
 # DisasterPipeline
+A machine learning pipeline to categorize events so that the messages can be sent to an appropriate disaster relief agency.
 
 **Table of Contents:**
 
-A machine learning pipeline to categorize events so that the messages can be sent to an appropriate disaster relief agency.
+* Installations:
+
 
 **Installations:**
 
