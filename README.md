@@ -1,20 +1,16 @@
 # DisasterPipeline
 A machine learning pipeline to categorize events so that the messages can be sent to an appropriate disaster relief agency.
 
+<!-- blank line -->
+----
+<!-- blank line -->
+
 **Table of Contents:**
+1. [ Installations. ](#ins)
 
-----
 
-## On this page
 
-- TOC
-{:toc}
-
-----
-
-<!-- blank line -->
-----
-<!-- blank line -->
+<a name="ins"></a>
 **Installations:**
 
 You need to have at least 3.0 version of Python and the following libraries installed:
