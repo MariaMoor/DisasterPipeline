@@ -80,11 +80,18 @@ The f1 score, precision and recall for the test set is outputted for each catego
 
 There are 3 steps to be executed to run the project:
 
-1. Cleaning Data
-to run the data you need to go to the project directory and run the folliwing command:
+1. Clean Data
+to run the script cleaning data you need to go to the project directory and run the following command:
 
 >python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db
 
+2. Run ML pipeline that trains classifier and saves it.
+for that to be done run this command from the project directory:
+>python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl
+
+3. Run web app:
+for that run the following command from app's directory
+>python run.py
 
 <a name="li"></a>
 ## Licensing, Authors, Acknowledgements
