@@ -7,7 +7,7 @@ A machine learning pipeline to categorize events so that the messages can be sen
 
 **Table of Contents:**
 1. [ Installations. ](#ins)
-2. [ Files Descriptions. ] (#fd)
+2. [ Files Descriptions. ](#fd)
 
 
 
