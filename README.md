@@ -44,13 +44,13 @@ Matplotlib<br />
 <a name="fd"></a>
 ## Files Descriptions:
 
--- app<br />
+-- app--------------------------------------------------------><br />
 | -- template<br />
-| |- master.html  # main page of web app<br />
-| |- go.html  # classification result page of web app
-|- run.py  # Flask file that runs app
+| |-- master.html  # main page of web app<br />
+| |-- go.html  # classification result page of web app
+|--  run.py  # Flask file that runs app
 
-- data
+-- data
 |- disaster_categories.csv  -> a csv file containing a training sample of categorized messages<br />
 |- disaster_messages.csv  -> a csv file with the messages (one column should be in English)<br />
 |- process_data.py
