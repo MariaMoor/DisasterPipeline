@@ -83,7 +83,7 @@ There are 3 steps to be executed to run the project:
 1. Cleaning Data
 to run the data you need to go to the project directory and run the folliwing command:
 
-python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db
+>python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db
 
 
 <a name="li"></a>
