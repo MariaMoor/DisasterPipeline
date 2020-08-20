@@ -1,23 +1,32 @@
 # DisasterPipeline
-A machine learning pipeline to categorize events so that the messages can be sent to an appropriate disaster relief agency.
-
 <!-- blank line -->
 ----
 <!-- blank line -->
 
+
 ## Table of Contents:
-1. [ Installations. ](#ins)
-2. [ Files Descriptions. ](#fd)
+1. [ Installations. ](#instal)
+2. [ Project Overview. ](#prov)
+3. [ Files Descriptions. ](#fd)
+4. [ Instructions. ](#instr)
+5. [ Model explanation. ](#me)
 
 
+<a name="prov"></a>
+## Project Overview:
 
-<a name="ins"></a>
+In this project I am working with a dataset of real messages that were sent during disaster events, provided by [Figure Eight](https://www.figure-eight.com)
+A machine learning pipeline to categorize events so that the messages can be sent to an appropriate disaster relief agency.
+
+<a name="instal"></a>
 ## Installations:
 
-You need to have at least 3.0 version of Python and the following libraries installed:
+I did my project on the 3.6.3  version of Python and used the following libraries:
 
 re<br />
+sys<br />
 sqlchemy<br />
+sqlite3<br />
 pandas<br />
 numpy<br />
 nltk<br />
@@ -27,19 +36,15 @@ flask SQLAlchemy<br />
 plotly<br />
 Matplotlib<br />
 
-<!-- blank line -->
-----
-<!-- blank line -->
 
 <a name="fd"></a>
 **Files Descriptions:**
 
-messages.csv - a csv file with the messages (one column should be in English)
-
+messages.csv - a csv file with the messages (one column should be in English)<br />
 categories.csv - a csv file containing a training sample of categorized messages
 
-**Instructions:**
 
+<a name="me"></a>
 **Model explanation:**
 
 ETL
@@ -55,6 +60,10 @@ This is done using the machine learning pipeline to first vectorize and apply TF
 A custom tokenize function is used to case normalize, lemmatize, and tokenize textin the estimator.
 GridSearchCV is used to find the best parameters for the model. 
 The f1 score, precision and recall for the test set is outputted for each category.
+
+<a name="instr"></a>
+**Instructions:**
+
 
 **Results:**
 
