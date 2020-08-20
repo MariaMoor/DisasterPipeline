@@ -44,8 +44,24 @@ Matplotlib<br />
 <a name="fd"></a>
 ## Files Descriptions:
 
-messages.csv - a csv file with the messages (one column should be in English)<br />
-categories.csv - a csv file containing a training sample of categorized messages
+- app
+| - template
+| |- master.html  # main page of web app
+| |- go.html  # classification result page of web app
+|- run.py  # Flask file that runs app
+
+- data
+|- disaster_categories.csv  -> a csv file containing a training sample of categorized messages<br />
+|- disaster_messages.csv  -> a csv file with the messages (one column should be in English)<br />
+|- process_data.py
+|- InsertDatabaseName.db   # database to save clean data to
+
+- models
+|- train_classifier.py
+|- classifier.pkl  # saved model 
+
+- README.md
+
 
 
 <a name="me"></a>
