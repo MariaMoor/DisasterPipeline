@@ -48,14 +48,14 @@ Matplotlib<br />
 |--  run.pyv-----------------------> Flask file that runs app<br />
 
 -- data
-|- disaster_categories.csv---------> file containing a training sample of categorized messages<br />
-|- disaster_messages.csv-----------> file with the disaster messages<br />
-|- process_data.py-----------------> performs ETL Process<br />
-|- DisasterResponse.db-------------> database to save clean data to<br />
+|-- disaster_categories.csv---------> file containing a training sample of categorized messages<br />
+|-- disaster_messages.csv-----------> file with the disaster messages<br />
+|-- process_data.py-----------------> performs ETL Process<br />
+|-- DisasterResponse.db-------------> database to save clean data to<br />
 
-- models
-|- train_classifier.py------------> performs ML Process<br />
-|- classifier.pkl ----------------> saved model<br />
+-- models
+|-- train_classifier.py------------> performs ML Process<br />
+|-- classifier.pkl ----------------> saved model<br />
 
 
 <a name="me"></a>
