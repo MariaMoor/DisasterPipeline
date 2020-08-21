@@ -7,7 +7,8 @@
 3. [Files Descriptions.](#fd)
 4. [Model explanation.](#me)
 5. [Instructions.](#instr)
-6. [Licensing, Authors, Acknowledgements.](#li)
+6. [Screenshots.](#scr)
+7. [Licensing, Authors, Acknowledgements.](#li)
 
 
 <a name="prov"></a>
@@ -96,7 +97,12 @@ for that run the following command from app's directory
 ```
 python run.py
 ```
+<a name="scr"></a>
+## Screenshots:
+![Graph1](/screenshots/Screenshot1.png)
+
+
 <a name="li"></a>
-## Licensing, Authors, Acknowledgements
+## Licensing, Authors, Acknowledgements:
 
 I would like to give a credit to Figure Eight Machine intelligence company for providing original dataset of Disaster Response Messages.
