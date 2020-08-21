@@ -56,7 +56,7 @@ def index():
                 Bar(
                     x=genre_names,
                     y=genre_counts
-                   )
+                )
             ],
 
             'layout': {
@@ -86,10 +86,9 @@ def index():
                 'marker': dict(size = 25, line=dict(width=0.5)),
                 'yaxis': {
                     'title': "Proportion",
-                    },
+                },
                 'xaxis': {
                     'title': "Category",
-
                 }
             }
         }
