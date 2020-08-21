@@ -96,6 +96,8 @@ for that run the following command from app's directory
 ```
 python run.py
 ```
+Go to http://0.0.0.0:3001/
+
 <a name="scr"></a>
 ## Screenshots:
 
