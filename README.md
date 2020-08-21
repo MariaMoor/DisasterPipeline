@@ -99,7 +99,10 @@ python run.py
 ```
 <a name="scr"></a>
 ## Screenshots:
+On the startpage you can see two graphs with the distribution of messages: 
 ![Graph1](/screenshots/Screenshot1.png)
+If you putt your message in the input line if will be classified into 36 categories:
+![Graph2](/screenshots/Screenshot2.png)
 
 
 <a name="li"></a>
