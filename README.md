@@ -33,9 +33,10 @@ numpy<br />
 nltk<br />
 sklearn<br />
 pickle<br />
-flask SQLAlchemy<br />
+flask<br />
+SQLAlchemy<br />
 plotly<br />
-Matplotlib<br />
+json<br />
 
 
 <a name="fd"></a>
